@@ -1,0 +1,78 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+       "title": "Typec_Cass Apis",
+       "description": "Cassandra service",
+       "version": "1.0.0"
+    },
+    "produces": ["application/json"],
+    "components": {
+       "securitySchemes": {
+          "JWT": {
+             "type": "apiKey",
+             "name": "api-access-token",
+             "in": "header",
+             "description": "Jwt authentication to access P2P service"
+          }
+       }
+    },
+    "security": [
+       {
+          "JWT": []
+       }
+    ],
+    "paths": {
+       "/api/typec/user/signup": {
+          "post": {
+             "tags": ["NFT Batch"],
+             "summary": "Batch burn",
+             "requestBody": {
+                "description": "",
+                "required": true,
+                "content": {
+                   "application/json": {
+                      "schema": {
+                         "type": "object",
+                         "properties": {
+                            "tokenId": {
+                               "type": "string"
+                            },
+                            "value": {
+                               "type": "number"
+                            },
+                            "mnemonics":{
+                               "type":"string"
+                            }
+                         }
+                      }
+                   }
+                }
+             },
+             "responses": {
+                "200": {
+                   "description": "burn Successfully",
+                   "content": {
+                      "application/json": {
+                         "schema": {
+                            "type": "object",
+                            "properties": {
+                               "message": {
+                                  "type": "string"
+                               },
+                               "data": {
+                                  "type": "object"
+                               }
+                            }
+                         }
+                      }
+                   }
+                },
+                "400": {
+                   "description": "Oops! Something went wrong. Please try again."
+                }
+             }
+          }
+       }
+    }
+ }
+ 
